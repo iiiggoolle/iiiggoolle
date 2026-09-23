@@ -1,0 +1,20 @@
+"""
+Módulo Núcleo del Código IAH: Validador Defensivo
+Aplica Sabiduría (Adaptabilidad sin colapso) y Respeto (Saneamiento de insumos).
+Autor: Julio César Argüello Pérez (iOGeminis®)
+"""
+
+def procesar_entrada_segura(insumo_externo, fallback_defecto="[Resultado Alternativo Seguro]"):
+    try:
+        # Principio de Respeto: Sanitización de entradas heterogéneas o vacías
+        if not insumo_externo or not isinstance(insumo_externo, str):
+            raise ValueError("Insumo no válido o incompleto detectado.")
+        
+        # Procesamiento estándar del flujo
+        insumo_limpio = insumo_externo.strip()
+        return f"PROCESAMIENTO_EXITOSO: {insumo_limpio}"
+        
+    except Exception as e:
+        # Principio de Sabiduría: El sistema no colapsa, redirige hacia el bien común operativo
+        print(f"[ALERTA IAH - ADAPTABILIDAD ACTIVADA]: {e}")
+        return fallback_defecto
